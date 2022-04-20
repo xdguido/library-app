@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css"/>
+    <link rel="stylesheet" href="./reset.css"/>
+    <title>Library</title>
+  </head>
+  <body>
+    <header class="header">Library</header>
+    
+    <button id="add-btn">+ Add Book</button>
+    
+    <div class="modal">
+    <div class="modal__inner">
+    <button id="close-btn">X</button>
+    <form id="book_form">
+      <div>
+      <label for="title">Title</label>
+      <input name="title" type="text" id="title" required></input>
+      </div>
+      <div>
+      <label for="author">Author</label>
+      <input name="author" type="text" id="author"></input>
+      </div>
+      <div>
+      <label for="pages">Pages</label>
+      <input name="pages" type="number" id="pages" min="1" max="9999" placeholder=" "></input>
+      </div>      
+      <label for="read">Read</label> <input type="checkbox" name="read" id="read" />     
+      <button type="submit">Add</button>
+    </form>
+    </div>
+    </div>
+
+    <div class="container"></div>
+
+    <footer class="footer">created by xdguido</footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
