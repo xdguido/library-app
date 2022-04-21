@@ -19,10 +19,53 @@ body {
   height: 100vh;
 }
 
+ul {
+  display: flex;
+  align-items: center;
+}
+
 #add-btn {
   margin-inline: auto;
   border-radius: 0.5rem;
   padding: 0.5em 1.5em;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-inline-start: 2.5%;
+  margin-block-end: 2.5%;
+  padding: 0.5%;
+  flex: 0 16%;
+  border-radius: 0.5rem;
+  background-color: var(--secondary-bckgrnd-clr);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 900px) {
+  .book-card {
+    flex: 0 45.25%;
+  }
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-inline: auto;
+  margin-block: 2%;
+  gap: 1rem;
+}
+
+.card-btn {
+  display: flex;
+  justify-content: center;
 }
 
 .modal {
@@ -57,7 +100,9 @@ body {
 }
 
 .header {
-  margin-bottom: max(5vh, 3rem);
+  display: flex;
+  padding-inline: 5vw;
+  justify-content: space-between;
   line-height: 1;
 }
 

@@ -48,7 +48,7 @@ document.getElementById("book_form").addEventListener("submit", (e) => {
 
 //user interface.
 
-const container = document.querySelector(".container");
+const container = document.querySelector(".card-container");
 const addBtn = document.querySelector("#add-btn");
 const closeBtn = document.querySelector("#close-btn");
 const modal = document.querySelector(".modal");
@@ -62,25 +62,32 @@ closeBtn.addEventListener("click", () => {
 
 function createBookCard(book) {
   const bookCard = document.createElement("div");
-  const title = document.createElement("p");
-  const author = document.createElement("p");
-  const pages = document.createElement("p");
+  const content = document.createElement("div");
+  const title = document.createElement("div");
+  const author = document.createElement("div");
+  const pages = document.createElement("div");
+  const cardBtn = document.createElement("div");
   const deleteBtn = document.createElement("button");
   const readBtn = document.createElement("button");
 
   bookCard.classList.add("book-card");
   deleteBtn.classList.add("delete-btn");
+  content.classList.add("card-content");
+  cardBtn.classList.add("card-btn");
 
   title.textContent = `"${book.title}"`;
   author.textContent = book.author;
   pages.textContent = `${book.pages} pages`;
   deleteBtn.textContent = "remove";
+  readBtn.textContent = "READ";
 
-  bookCard.appendChild(title);
-  bookCard.appendChild(author);
-  bookCard.appendChild(pages);
-  bookCard.appendChild(readBtn);
-  bookCard.appendChild(deleteBtn);
+  content.appendChild(title);
+  content.appendChild(author);
+  content.appendChild(pages);
+  cardBtn.appendChild(readBtn);
+  cardBtn.appendChild(deleteBtn);
+  bookCard.appendChild(content);
+  bookCard.appendChild(cardBtn);
   container.appendChild(bookCard);
 }
 
