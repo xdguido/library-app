@@ -1,36 +1,4 @@
-// class Collection {
-//   constructor(name) {
-//     this.id = Date.now().toString();
-//     this.name = name;
-//     this.books = [];
-//   }
-//   addBook(newBook) {
-//     if (!this.isInLibrary(newBook)) {
-//       this.books.push(newBook);
-//     }
-//   }
-//   removeBook(Title) {
-//     this.books = this.books.filter((book) => book.title !== Title);
-//   }
-//   isInLibrary(newBook) {
-//     return this.books.some(
-//       (book) => book.title === newBook.title && book.author === newBook.author
-//     );
-//   }
-// }
-// class Book {
-//   constructor(Title, Author = "Unknown", Pages = "-", Read = "false") {
-//     this.id = Date.now().toString();
-//     this.title = Title;
-//     this.author = Author;
-//     this.pages = Pages;
-//     this.read = Read;
-//   }
-// }
-
 //variables.
-
-// const my_collection = new Collection("New Collection");
 
 const bookContainer = document.querySelector(".book-container");
 const mainContainer = document.querySelector(".main-container");
@@ -45,16 +13,16 @@ const collectionInput = document.querySelector(".collection-input");
 const bookForm = document.querySelector("#book-form");
 const navToggle = document.querySelector(".nav-toggle");
 const bookInput = document.querySelector("#title");
-// const readBookBtn = document.querySelector(".read-btn");
-// const deleteBookBtn = document.querySelector(".delete-btn");
 
 const LOCAL_STORAGE_LIST_KEY = "book.library";
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "book.selectedCollectionId";
-// let library = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [{ id: "1", name: "My Collection", books: [] }];
-let library = [{ id: "1", name: "My Collection", books: [] }];
-// let selectedCollectionId =
-//   localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY) || "1";
-let selectedCollectionId = "1";
+let library = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [
+  { id: "1", name: "My Collection", books: [] },
+];
+let selectedCollectionId =
+  localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY) || "1";
+// let library = [{ id: "1", name: "My Collection", books: [] }];
+// let selectedCollectionId = "1";
 
 const createCollection = (Name) => {
   return { id: Date.now().toString(), name: Name, books: [] };
@@ -152,9 +120,6 @@ bookForm.addEventListener("submit", (e) => {
     } else return pages;
   };
 
-  // let selectedCollection = library.find(
-  //   (collection) => collection.id === selectedCollectionId
-  // );
   const newBook = createBook(title, checkAuthor(), checkPages(), read);
   addBook(newBook);
 
@@ -207,7 +172,7 @@ function createBookCards(book) {
     readBtn.classList.add("read-btn--unread");
   }
 
-  title.textContent = `" ${book.title} "`;
+  title.textContent = `"${book.title}"`;
   author.textContent = book.author;
   pages.textContent = `${book.pages} Pages`;
   deleteBtn.textContent = "Remove";
@@ -243,7 +208,7 @@ function createCollectionCards(collection) {
   collectionCard.classList.add("collection-card");
   collectionCard.textContent = collection.name;
   collectionCard.dataset.id = collection.id;
-  removeCollectionBtn.innerHTML = `<span class="material-icons"> delete </span>`;
+  removeCollectionBtn.innerHTML = `<span class="material-icons del-collection-btn"> delete </span>`;
   removeCollectionBtn.dataset.id = collection.id;
   if (collection.id === selectedCollectionId) {
     collectionCard.classList.add("collection--selected");
@@ -269,9 +234,6 @@ function renderCollections() {
 
 function renderBooks() {
   resetElements(bookContainer);
-  // let selectedCollection = library.find(
-  //   (collection) => collection.id === selectedCollectionId
-  // );
   if (selectedCollectionId == null) {
     mainContainer.style.display = "none";
   } else {
@@ -337,6 +299,4 @@ function isInCollection(newBook) {
   );
 }
 
-// renderCollections();
-// renderBooks();
 saveAndRender();
