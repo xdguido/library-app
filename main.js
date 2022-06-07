@@ -50,11 +50,13 @@ const bookInput = document.querySelector("#title");
 
 const LOCAL_STORAGE_LIST_KEY = "book.library";
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "book.selectedCollectionId";
-// let library = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [{ id: "1", name: "My Collection", books: [] }];
-let library = [{ id: "1", name: "My Collection", books: [] }];
-// let selectedCollectionId =
-//   localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY) || "1";
-let selectedCollectionId = "1";
+let library = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [
+  { id: "1", name: "My Collection", books: [] },
+];
+let selectedCollectionId =
+  localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY) || "1";
+// let library = [{ id: "1", name: "My Collection", books: [] }];
+// let selectedCollectionId = "1";
 
 const createCollection = (Name) => {
   return { id: Date.now().toString(), name: Name, books: [] };
